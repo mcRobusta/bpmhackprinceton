@@ -28,7 +28,7 @@
         <vs-button @click="predictPremium()">Predict premium</vs-button>
     </div>
     <div class="prediction">
-      Predicted premium: £{{premium}}
+      Predicted premium: ${{premium}}
     </div>
   </div>
 </template>
