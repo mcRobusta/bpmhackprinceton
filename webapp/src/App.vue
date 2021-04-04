@@ -64,7 +64,7 @@ export default {
           this.region = i
         }
       }
-      var result = await axios.post('https://httpbin.org/post', {smoker: this.smoker, bmi: this.bmi, age: this.age, sex: this.sex, children: this.children, region: this.region});
+      var result = await axios.post('http://7ce8ae8d-9422-48ca-b80c-7fc4adc582cc.eastus.azurecontainer.io/score', {smoker: this.smoker, bmi: this.bmi, age: this.age, sex: this.sex, children: this.children, region: this.region});
       console.log(result)
       this.premium = result
     }
