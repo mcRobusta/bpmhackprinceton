@@ -1,18 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="inputs">
+      <vs-input
+        primary
+        v-model="smoker"
+        placeholder="Smoker (yes/no)"/>
+        <vs-input
+        primary
+        v-model="bmi"
+        placeholder="Body Mass Index (BMI)"/>
+        <vs-input
+        primary
+        v-model="age"
+        placeholder="Age (years only)"/>
+        <vs-input
+        primary
+        v-model="sex"
+        placeholder="Sex (male/female)"/>
+        <vs-input
+        primary
+        v-model="children"
+        placeholder="Number of children"/>
+        <vs-input
+        primary
+        v-model="region"
+        placeholder="Region (north, northeast, southwest, etc.)- type this in lowercase without spaces."/>
+    </div>
+    <div class="prediction">
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data:() => ({
+        smoker: '',
+        bmi: 0,
+        age: 0,
+        sex: '',
+        children: 0,
+        region: 0
+      })
 }
 </script>
 
