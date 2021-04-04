@@ -25,13 +25,16 @@
         primary
         v-model="region"
         placeholder="Region (north, northeast, southwest, etc.)- type this in lowercase without spaces."/>
+        <vs-button @click="predictPremium()">Predict premium</vs-button>
     </div>
     <div class="prediction">
+      Predicted premium: £{{premium}}
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'App',
   data:() => ({
@@ -40,8 +43,32 @@ export default {
         age: 0,
         sex: '',
         children: 0,
-        region: 0
-      })
+        region: 0,
+        premium: 0
+  }),
+  methods: {
+    predictPremium: async function() {
+      if (this.smoker == "yes") {
+        this.smoker = 1
+      } else if (this.smoker == "no") {
+        this.smoker = 0
+      }
+      if (this.sex == "male"){
+        this.sex = 0
+      } else if (this.sex == "female") {
+        this.sex = 1
+      }
+      var regionArray = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
+      for (var i = 0; i < 7; i++) {
+        if (this.region === regionArray[i]) {
+          this.region = i
+        }
+      }
+      var result = await axios.post('https://httpbin.org/post', {smoker: this.smoker, bmi: this.bmi, age: this.age, sex: this.sex, children: this.children, region: this.region});
+      console.log(result)
+      this.premium = result
+    }
+  }
 }
 </script>
 
