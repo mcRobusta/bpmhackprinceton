@@ -72,7 +72,7 @@ export default {
         this.children,
         this.region
       ]]}
-      var result = await axios.post('https://7ce8ae8d-9422-48ca-b80c-7fc4adc582cc.eastus.azurecontainer.io/score', data);
+      var result = await axios.post('https://7ce8ae8d-9422-48ca-b80c-7fc4adc582cc.eastus.azurecontainer.io/score/', data);
       console.log(result)
       this.premium = result
     }
